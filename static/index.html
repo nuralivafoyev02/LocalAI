@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111112" media="(prefers-color-scheme: dark)">
+  <title>LocalAI</title>
+  <link rel="icon" href="/static/favicon.svg?v={{VERSION}}" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css?v={{VERSION}}">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" aria-label="Suhbatlar">
+      <div class="sidebar-head">
+        <h2>Suhbatlar</h2>
+        <button class="icon-btn" id="sidebarNew" type="button" aria-label="Yangi suhbat" title="Yangi suhbat"></button>
+        <button class="icon-btn" id="sidebarClose" type="button" aria-label="Yopish"></button>
+      </div>
+      <ul class="chat-list" id="chatList"></ul>
+      <div class="sidebar-foot" id="sidebarFoot"></div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="Suhbatlar ro'yxati" title="Suhbatlar"></button>
+        <button class="brand" id="brandBtn" type="button" aria-label="Holat">
+          <span class="orb"></span>
+          <span>LocalAI</span>
+          <span class="status-dot wait" id="statusDot"></span>
+        </button>
+        <div class="spacer"></div>
+        <button class="icon-btn" id="newChatBtn" type="button" aria-label="Yangi suhbat" title="Yangi suhbat (Ctrl+Shift+O)"></button>
+      </header>
+
+      <div class="popover" id="statusPopover" hidden></div>
+
+      <section class="thread" id="thread" aria-live="polite">
+        <div class="thread-inner" id="threadInner"></div>
+      </section>
+
+      <footer class="composer-wrap">
+        <div class="composer-inner">
+          <button class="scroll-down" id="scrollDown" type="button" aria-label="Pastga"></button>
+          <div class="banner" id="banner" hidden></div>
+          <div class="slash-menu" id="slashMenu" role="listbox" hidden></div>
+          <form class="composer" id="composer" autocomplete="off">
+            <div class="file-chips" id="pendingFiles"></div>
+            <textarea id="input" rows="1" placeholder="Xabar yozing yoki / bilan ko'nikma tanlang…" aria-label="Xabar"></textarea>
+            <div class="composer-bar">
+              <button class="icon-btn" id="attachBtn" type="button" aria-label="Fayl biriktirish" title="Fayl biriktirish"></button>
+              <button class="think-toggle" id="thinkBtn" type="button" aria-pressed="false" title="Murakkab savollar uchun chuqurroq o'ylaydi">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9Z"/><path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7Z"/></svg>
+                <span>Chuqur o'ylash</span>
+              </button>
+              <button class="send-btn" id="sendBtn" type="submit" aria-label="Yuborish" disabled>
+                <svg class="i-send" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></svg>
+                <svg class="i-stop" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2.5" fill="currentColor" stroke="none"/></svg>
+              </button>
+            </div>
+          </form>
+          <input type="file" id="fileInput" multiple hidden>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="drop-overlay" id="dropOverlay" aria-hidden="true">
+    <div>
+      <svg viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M20 15v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3"/></svg>
+      <div>Faylni shu yerga tashlang</div>
+      <small>Excel, CSV, JSON, PDF, DOCX, kod va matn fayllari</small>
+    </div>
+  </div>
+  <div class="toast-wrap" id="toasts"></div>
+
+  <script src="/static/markdown.js?v={{VERSION}}"></script>
+  <script src="/static/app.js?v={{VERSION}}"></script>
+</body>
+</html>
